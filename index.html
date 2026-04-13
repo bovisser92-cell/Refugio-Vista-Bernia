@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Refugio Vista Bernia – Sierra de Bernia, España</title>
+  <meta name="description" content="Refugio Vista Bernia – een magische locatie in de Sierra de Bernia met spectaculair uitzicht over de Middellandse Zee. Restaurant, bruiloften & grote feesten." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & base ───────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', sans-serif;
+      color: #2c2c2c;
+      background: #faf8f5;
+      overflow-x: hidden;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── CSS Variables ───────────────────────────────────────────────── */
+    :root {
+      --gold:    #c9a85c;
+      --gold-lt: #e8d5a3;
+      --olive:   #4a5e3a;
+      --cream:   #faf8f5;
+      --dark:    #1a1a1a;
+      --mid:     #5a5a5a;
+      --accent:  #8b1a1a;
+    }
+
+    /* ─── Language switcher ───────────────────────────────────────────── */
+    [data-lang] { display: none; }
+    body.nl [data-lang="nl"],
+    body.es [data-lang="es"],
+    body.de [data-lang="de"],
+    body.fr [data-lang="fr"] { display: inherit; }
+
+    /* ─── Navigation ──────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 72px;
+      background: rgba(26,26,26,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,92,0.25);
+      transition: background 0.3s;
+    }
+    nav.scrolled { background: rgba(26,26,26,0.97); }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .nav-logo span { display: block; font-size: 0.65rem; color: #aaa; letter-spacing: 0.2em; text-transform: uppercase; margin-top: -2px; }
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+      font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .nav-links a { color: #ccc; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .lang-switch {
+      display: flex; gap: 0.4rem;
+    }
+    .lang-switch button {
+      background: none; border: 1px solid rgba(201,168,92,0.4);
+      color: #aaa; cursor: pointer; font-size: 0.7rem;
+      letter-spacing: 0.08em; padding: 0.2rem 0.55rem;
+      border-radius: 2px; transition: all 0.2s;
+    }
+    .lang-switch button:hover,
+    .lang-switch button.active { background: var(--gold); border-color: var(--gold); color: #1a1a1a; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); }
+    @media(max-width: 900px){
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ─── Hero ────────────────────────────────────────────────────────── */
+    .hero {
+      position: relative; height: 100vh; min-height: 640px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.55) 100%),
+        url('le-panorama.jpg') center/cover no-repeat;
+      transform: scale(1.06);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.06); }
+      to   { transform: scale(1.00); }
+    }
+    .hero-content {
+      position: relative; text-align: center; color: #fff;
+      padding: 2rem;
+      animation: fadeUp 1.2s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--gold-lt); margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      font-weight: 700;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+      margin-bottom: 0.6rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-lt); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 300; opacity: 0.9;
+      margin: 1rem auto 2.5rem;
+      max-width: 600px; line-height: 1.6;
+    }
+    .hero-cta {
+      display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+      border-radius: 2px; transition: all 0.25s; cursor: pointer;
+    }
+    .btn-gold {
+      background: var(--gold); color: #1a1a1a; border: 2px solid var(--gold);
+      font-weight: 700;
+    }
+    .btn-gold:hover { background: transparent; color: var(--gold); }
+    .btn-outline {
+      background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.6);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      color: rgba(255,255,255,0.6); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; animation: bounce 2.5s infinite;
+    }
+    .hero-scroll::after {
+      content: ''; display: block; width: 1px; height: 40px;
+      background: linear-gradient(to bottom, rgba(201,168,92,0.8), transparent);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ─── Section base ───────────────────────────────────────────────── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      display: block; font-size: 0.7rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.15; color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--olive); }
+    .section-lead {
+      font-size: 1.1rem; line-height: 1.8; color: var(--mid);
+      max-width: 680px;
+    }
+    .divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 1.5rem 0;
+    }
+
+    /* ─── About strip ─────────────────────────────────────────────────── */
+    .strip-facts {
+      background: var(--dark);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .strip-fact {
+      padding: 2.2rem 1.5rem; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .strip-fact:last-child { border-right: none; }
+    .strip-fact-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem; color: var(--gold); display: block;
+    }
+    .strip-fact-label { font-size: 0.75rem; letter-spacing: 0.15em; color: #999; text-transform: uppercase; }
+
+    /* ─── About split ─────────────────────────────────────────────────── */
+    .about { background: var(--cream); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .about-img-wrap {
+      position: relative; height: 520px; border-radius: 2px; overflow: hidden;
+      box-shadow: 20px 20px 60px rgba(0,0,0,0.15);
+    }
+    .about-img-wrap img {
+      object-fit: cover; height: 100%; transition: transform 6s ease;
+    }
+    .about-img-wrap:hover img { transform: scale(1.06); }
+    .about-badge {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      width: 130px; height: 130px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+    .about-badge-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: #1a1a1a; font-weight: 700; }
+    .about-badge-txt { font-size: 0.6rem; letter-spacing: 0.1em; color: #1a1a1a; text-transform: uppercase; text-align: center; line-height: 1.3; }
+    @media(max-width: 800px){
+      .about-grid { grid-template-columns: 1fr; }
+      .about-badge { bottom: 1rem; right: 1rem; }
+    }
+
+    /* ─── Restaurant ──────────────────────────────────────────────────── */
+    .restaurant { background: #fff; }
+    .restaurant-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .restaurant-imgs {
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 260px 260px; gap: 1rem;
+    }
+    .restaurant-imgs .img-tall {
+      grid-row: span 2; border-radius: 2px; overflow: hidden;
+    }
+    .restaurant-imgs .img-sm { border-radius: 2px; overflow: hidden; }
+    .restaurant-imgs img { height: 100%; object-fit: cover; transition: transform 5s; }
+    .restaurant-imgs .img-tall:hover img,
+    .restaurant-imgs .img-sm:hover img { transform: scale(1.07); }
+    .menu-items { margin-top: 2rem; }
+    .menu-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem 0; border-bottom: 1px solid #eee;
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-icon { font-size: 1.4rem; margin-top: 0.1rem; flex-shrink: 0; }
+    .menu-item h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--dark); }
+    .menu-item p { font-size: 0.85rem; color: var(--mid); line-height: 1.5; margin-top: 0.2rem; }
+    @media(max-width: 800px){
+      .restaurant-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Weddings ────────────────────────────────────────────────────── */
+    .weddings {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #1a120b 0%, #2d1f0e 50%, #1a120b 100%);
+      color: #fff;
+    }
+    .weddings::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('singer.jpg') center/cover;
+      opacity: 0.18;
+    }
+    .weddings-inner { position: relative; }
+    .weddings-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 4rem;
+    }
+    .weddings-text .section-title { color: #fff; }
+    .weddings-text .section-title em { color: var(--gold-lt); }
+    .weddings-text .section-lead { color: rgba(255,255,255,0.75); }
+    .wedding-features { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .w-feature {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,168,92,0.2);
+      border-radius: 4px;
+      padding: 1.2rem;
+    }
+    .w-feature-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .w-feature h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--gold-lt); margin-bottom: 0.3rem; }
+    .w-feature p { font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+    .weddings-gallery {
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px; gap: 1rem;
+    }
+    .weddings-gallery .w-img { border-radius: 4px; overflow: hidden; position: relative; }
+    .weddings-gallery .w-img img { height: 100%; object-fit: cover; transition: transform 6s; }
+    .weddings-gallery .w-img:hover img { transform: scale(1.08); }
+    .weddings-gallery .w-img-wide { grid-column: span 2; height: 220px; border-radius: 4px; overflow: hidden; }
+    .weddings-gallery .w-img-wide img { height: 100%; object-fit: cover; }
+    @media(max-width: 800px){
+      .weddings-grid { grid-template-columns: 1fr; }
+      .wedding-features { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Packages ────────────────────────────────────────────────────── */
+    .packages { background: var(--cream); }
+    .packages-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem; margin-top: 3.5rem;
+    }
+    .package-card {
+      background: #fff;
+      border: 1px solid #e8e0d4;
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .package-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+    .package-img { height: 220px; overflow: hidden; }
+    .package-img img { height: 100%; object-fit: cover; transition: transform 6s; }
+    .package-card:hover .package-img img { transform: scale(1.08); }
+    .package-body { padding: 2rem; }
+    .package-tag {
+      display: inline-block; font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold);
+      padding: 0.2rem 0.7rem; border-radius: 2px; margin-bottom: 1rem;
+    }
+    .package-body h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark); margin-bottom: 0.8rem; }
+    .package-body p { font-size: 0.9rem; color: var(--mid); line-height: 1.7; }
+    .package-body ul { margin-top: 1rem; padding-left: 0; list-style: none; }
+    .package-body ul li {
+      font-size: 0.85rem; color: var(--mid); padding: 0.35rem 0;
+      border-bottom: 1px solid #f0ece6; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .package-body ul li::before { content: '✦'; color: var(--gold); font-size: 0.55rem; flex-shrink: 0; }
+    .package-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 1.5rem; font-size: 0.8rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold); font-weight: 700;
+      transition: gap 0.2s;
+    }
+    .package-link:hover { gap: 0.9rem; }
+
+    /* ─── Location / Nature ───────────────────────────────────────────── */
+    .location { background: var(--olive); color: #fff; }
+    .location .section-title { color: #fff; }
+    .location .section-title em { color: var(--gold-lt); }
+    .location .section-lead { color: rgba(255,255,255,0.8); }
+    .location-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: start; margin-top: 3rem;
+    }
+    .location-map {
+      border-radius: 4px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      height: 400px; background: #2a3d20;
+    }
+    .location-map iframe { width: 100%; height: 100%; border: none; }
+    .location-facts { display: flex; flex-direction: column; gap: 1.5rem; }
+    .loc-fact {
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      padding: 1.2rem; background: rgba(255,255,255,0.08);
+      border-radius: 4px; border-left: 3px solid var(--gold);
+    }
+    .loc-fact-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .loc-fact h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--gold-lt); margin-bottom: 0.3rem; }
+    .loc-fact p { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+    @media(max-width: 800px){
+      .location-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Gallery ─────────────────────────────────────────────────────── */
+    .gallery { background: var(--dark); }
+    .gallery .section-title { color: #fff; }
+    .gallery .section-lead { color: #999; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 260px 260px;
+      gap: 1rem; margin-top: 3rem;
+    }
+    .g-item { border-radius: 4px; overflow: hidden; position: relative; cursor: pointer; }
+    .g-item img { height: 100%; object-fit: cover; transition: transform 5s; }
+    .g-item:hover img { transform: scale(1.1); }
+    .g-item::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .g-item:hover::after { opacity: 1; }
+    .g-item-wide { grid-column: span 2; }
+    .g-item-tall { grid-row: span 2; }
+    @media(max-width: 900px){
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .g-item-wide, .g-item-tall { grid-column: auto; grid-row: auto; }
+      .g-item { height: 220px; }
+    }
+
+    /* ─── Testimonials ────────────────────────────────────────────────── */
+    .testimonials { background: var(--cream); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem; margin-top: 3.5rem;
+    }
+    .testimonial {
+      background: #fff; border-radius: 4px;
+      padding: 2rem; border-top: 3px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .testimonial-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .testimonial p { font-size: 0.95rem; line-height: 1.7; color: var(--mid); font-style: italic; }
+    .testimonial-author { margin-top: 1.2rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; color: var(--dark); }
+    .testimonial-place { font-size: 0.75rem; color: #999; }
+
+    /* ─── Contact ─────────────────────────────────────────────────────── */
+    .contact { background: #fff; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .contact-item-icon {
+      width: 44px; height: 44px; background: var(--gold);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-item h4 { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: #999; margin-bottom: 0.25rem; }
+    .contact-item p, .contact-item a { font-size: 0.95rem; color: var(--dark); }
+    .contact-item a:hover { color: var(--gold); }
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #999; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1px solid #ddd; border-radius: 2px; padding: 0.8rem 1rem;
+      font-family: 'Lato', sans-serif; font-size: 0.9rem; color: var(--dark);
+      background: #faf8f5; transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { outline: none; border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    @media(max-width: 800px){
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Footer ──────────────────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      padding: 4rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem; padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .nav-logo { font-size: 1.4rem; margin-bottom: 1rem; display: block; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h5 {
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a { font-size: 0.85rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: 1200px; margin: 2rem auto 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.75rem;
+    }
+    @media(max-width: 800px){
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+    @media(max-width: 500px){
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Scroll animation ────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── Utility ─────────────────────────────────────────────────────── */
+    .text-center { text-align: center; }
+    .text-center .section-lead { margin: 0 auto; }
+    .mt-2 { margin-top: 2rem; }
+    .mt-3 { margin-top: 3rem; }
+  </style>
+</head>
+
+<body class="nl">
+
+<!-- ═══ NAVIGATION ═════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    Refugio Vista Bernia
+    <span>Sierra de Bernia · Costa Blanca</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#about"><span data-lang="nl">Over ons</span><span data-lang="es">Nosotros</span><span data-lang="de">Über uns</span><span data-lang="fr">À propos</span></a></li>
+    <li><a href="#restaurant">Restaurant</a></li>
+    <li><a href="#weddings"><span data-lang="nl">Bruiloften</span><span data-lang="es">Bodas</span><span data-lang="de">Hochzeiten</span><span data-lang="fr">Mariages</span></a></li>
+    <li><a href="#events"><span data-lang="nl">Feesten</span><span data-lang="es">Eventos</span><span data-lang="de">Events</span><span data-lang="fr">Événements</span></a></li>
+    <li><a href="#location"><span data-lang="nl">Locatie</span><span data-lang="es">Ubicación</span><span data-lang="de">Lage</span><span data-lang="fr">Lieu</span></a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="lang-switch">
+    <button onclick="setLang('nl')" id="btn-nl" class="active">NL</button>
+    <button onclick="setLang('es')" id="btn-es">ES</button>
+    <button onclick="setLang('de')" id="btn-de">DE</button>
+    <button onclick="setLang('fr')" id="btn-fr">FR</button>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Sierra de Bernia · Costa Blanca · España</p>
+    <h1>
+      <span data-lang="nl">Refugio<br/><em>Vista Bernia</em></span>
+      <span data-lang="es">Refugio<br/><em>Vista Bernia</em></span>
+      <span data-lang="de">Refugio<br/><em>Vista Bernia</em></span>
+      <span data-lang="fr">Refugio<br/><em>Vista Bernia</em></span>
+    </h1>
+    <p class="hero-sub">
+      <span data-lang="nl">Een magische plek op 800 meter hoogte, met panoramisch uitzicht over de Middellandse Zee. Verfijnd restaurant · Bruiloften · Grote feesten</span>
+      <span data-lang="es">Un lugar mágico a 800 metros de altura, con vistas panorámicas al Mediterráneo. Restaurante de calidad · Bodas · Grandes celebraciones</span>
+      <span data-lang="de">Ein magischer Ort auf 800 Metern Höhe mit Panoramablick auf das Mittelmeer. Gehobenes Restaurant · Hochzeiten · Große Feste</span>
+      <span data-lang="fr">Un lieu magique à 800 mètres d'altitude, avec une vue panoramique sur la Méditerranée. Restaurant raffiné · Mariages · Grandes fêtes</span>
+    </p>
+    <div class="hero-cta">
+      <a href="#weddings" class="btn btn-gold">
+        <span data-lang="nl">Bruiloft plannen</span>
+        <span data-lang="es">Planificar boda</span>
+        <span data-lang="de">Hochzeit planen</span>
+        <span data-lang="fr">Planifier un mariage</span>
+      </a>
+      <a href="#restaurant" class="btn btn-outline">
+        <span data-lang="nl">Ons restaurant</span>
+        <span data-lang="es">Nuestro restaurante</span>
+        <span data-lang="de">Unser Restaurant</span>
+        <span data-lang="fr">Notre restaurant</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span data-lang="nl">Ontdek</span>
+    <span data-lang="es">Descubrir</span>
+    <span data-lang="de">Entdecken</span>
+    <span data-lang="fr">Découvrir</span>
+  </div>
+</section>
+
+<!-- ═══ FACT STRIP ══════════════════════════════════════════════════════ -->
+<div class="strip-facts">
+  <div class="strip-fact">
+    <span class="strip-fact-num">800m</span>
+    <span class="strip-fact-label">
+      <span data-lang="nl">Hoogte boven zee</span>
+      <span data-lang="es">Altitud</span>
+      <span data-lang="de">Höhe ü. d. Meeresspiegel</span>
+      <span data-lang="fr">Altitude</span>
+    </span>
+  </div>
+  <div class="strip-fact">
+    <span class="strip-fact-num">360°</span>
+    <span class="strip-fact-label">
+      <span data-lang="nl">Panorama uitzicht</span>
+      <span data-lang="es">Vista panorámica</span>
+      <span data-lang="de">Panoramablick</span>
+      <span data-lang="fr">Vue panoramique</span>
+    </span>
+  </div>
+  <div class="strip-fact">
+    <span class="strip-fact-num">200+</span>
+    <span class="strip-fact-label">
+      <span data-lang="nl">Gasten capaciteit</span>
+      <span data-lang="es">Capacidad de invitados</span>
+      <span data-lang="de">Gästekapazität</span>
+      <span data-lang="fr">Capacité d'accueil</span>
+    </span>
+  </div>
+  <div class="strip-fact">
+    <span class="strip-fact-num">∞</span>
+    <span class="strip-fact-label">
+      <span data-lang="nl">Onvergetelijke momenten</span>
+      <span data-lang="es">Momentos inolvidables</span>
+      <span data-lang="de">Unvergessliche Momente</span>
+      <span data-lang="fr">Moments inoubliables</span>
+    </span>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ══════════════════════════════════════════════════════════ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img src="bar-refugio-vista-bernia.jpg" alt="Refugio Vista Bernia panorama" />
+        <div class="about-badge">
+          <span class="about-badge-num">★</span>
+          <span class="about-badge-txt">
+            <span data-lang="nl">Unieke<br/>Locatie</span>
+            <span data-lang="es">Lugar<br/>Único</span>
+            <span data-lang="de">Einzig-<br/>artiger Ort</span>
+            <span data-lang="fr">Lieu<br/>Unique</span>
+          </span>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="section-label">
+          <span data-lang="nl">Over Refugio Vista Bernia</span>
+          <span data-lang="es">Acerca de Refugio Vista Bernia</span>
+          <span data-lang="de">Über Refugio Vista Bernia</span>
+          <span data-lang="fr">À propos de Refugio Vista Bernia</span>
+        </span>
+        <h2 class="section-title">
+          <span data-lang="nl">Waar de bergen <em>de zee omhelzen</em></span>
+          <span data-lang="es">Donde las montañas <em>abrazan el mar</em></span>
+          <span data-lang="de">Wo die Berge <em>das Meer umarmen</em></span>
+          <span data-lang="fr">Là où les montagnes <em>embrassent la mer</em></span>
+        </h2>
+        <div class="divider"></div>
+        <p class="section-lead">
+          <span data-lang="nl">Hoog in de Sierra de Bernia, op zo'n 800 meter boven de kust van de Costa Blanca, ligt Refugio Vista Bernia. Een authentieke en betoverende plek waar het adembenemende panorama over de Middellandse Zee samenvloeit met de ruige schoonheid van het Spaanse berglandschap. Van hieruit strekt het uitzicht zich uit van de haven van Alicante tot aan Cabo de la Nao bij Jávea — en op heldere dagen is zelfs Ibiza te zien.</span>
+          <span data-lang="es">En lo alto de la Sierra de Bernia, a unos 800 metros sobre la costa de la Costa Blanca, se encuentra Refugio Vista Bernia. Un lugar auténtico y encantador donde el impresionante panorama del Mediterráneo se fusiona con la belleza salvaje del paisaje montañoso español. Desde aquí, las vistas se extienden desde el puerto de Alicante hasta el Cabo de la Nao en Jávea — y en los días despejados, incluso se puede ver Ibiza.</span>
+          <span data-lang="de">Hoch in der Sierra de Bernia, auf etwa 800 Metern über der Küste der Costa Blanca, liegt Refugio Vista Bernia. Ein authentischer und bezaubernder Ort, an dem das atemberaubende Panorama über das Mittelmeer mit der rauen Schönheit der spanischen Berglandschaft verschmilzt. Von hier aus erstreckt sich der Blick vom Hafen von Alicante bis zum Cabo de la Nao bei Jávea — und an klaren Tagen ist sogar Ibiza zu sehen.</span>
+          <span data-lang="fr">Haut dans la Sierra de Bernia, à environ 800 mètres au-dessus de la côte de la Costa Blanca, se trouve Refugio Vista Bernia. Un endroit authentique et envoûtant où le panorama à couper le souffle sur la Méditerranée se fond avec la beauté sauvage du paysage montagneux espagnol. De là, la vue s'étend du port d'Alicante jusqu'au Cabo de la Nao à Jávea — et par temps clair, on peut même apercevoir Ibiza.</span>
+        </p>
+        <p class="section-lead mt-2">
+          <span data-lang="nl">Wij bieden een verfijnd restaurant voor dagjesmensen en wandelaars, en wij breiden onze faciliteiten uit voor bruiloften en grote feesten. Uw speciale dag verdient een onvergetelijke decor.</span>
+          <span data-lang="es">Ofrecemos un restaurante de calidad para excursionistas y senderistas, y ampliamos nuestras instalaciones para bodas y grandes celebraciones. Su día especial merece un escenario inolvidable.</span>
+          <span data-lang="de">Wir bieten ein gehobenes Restaurant für Tagesausflügler und Wanderer und erweitern unsere Einrichtungen für Hochzeiten und große Feste. Ihr besonderer Tag verdient eine unvergessliche Kulisse.</span>
+          <span data-lang="fr">Nous proposons un restaurant raffiné pour les excursionnistes et les randonneurs, et nous développons nos installations pour les mariages et les grandes fêtes. Votre journée spéciale mérite un décor inoubliable.</span>
+        </p>
+        <a href="#contact" class="btn btn-gold mt-3" style="display:inline-block;">
+          <span data-lang="nl">Neem contact op</span>
+          <span data-lang="es">Contáctenos</span>
+          <span data-lang="de">Kontaktieren Sie uns</span>
+          <span data-lang="fr">Contactez-nous</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESTAURANT ══════════════════════════════════════════════════════ -->
+<section class="restaurant" id="restaurant">
+  <div class="container">
+    <div class="restaurant-grid">
+      <div class="reveal">
+        <span class="section-label">
+          <span data-lang="nl">Onze Keuken</span>
+          <span data-lang="es">Nuestra Cocina</span>
+          <span data-lang="de">Unsere Küche</span>
+          <span data-lang="fr">Notre Cuisine</span>
+        </span>
+        <h2 class="section-title">
+          <span data-lang="nl">Authentieke smaken, <em>eindeloos uitzicht</em></span>
+          <span data-lang="es">Sabores auténticos, <em>vistas infinitas</em></span>
+          <span data-lang="de">Authentische Aromen, <em>endlose Aussichten</em></span>
+          <span data-lang="fr">Saveurs authentiques, <em>vues infinies</em></span>
+        </h2>
+        <div class="divider"></div>
+        <p class="section-lead">
+          <span data-lang="nl">Ons restaurant serveert verse, traditionele Mediterrane gerechten in een sfeervolle omgeving. Geniet van de eenvoudige schoonheid van de Spaanse keuken terwijl u uitkijkt over de glinsterende zee.</span>
+          <span data-lang="es">Nuestro restaurante sirve platos mediterráneos frescos y tradicionales en un ambiente acogedor. Disfrute de la sencilla belleza de la cocina española mientras contempla el mar reluciente.</span>
+          <span data-lang="de">Unser Restaurant serviert frische, traditionelle mediterrane Gerichte in einer gemütlichen Atmosphäre. Genießen Sie die schlichte Schönheit der spanischen Küche mit Blick auf das glitzernde Meer.</span>
+          <span data-lang="fr">Notre restaurant sert des plats méditerranéens frais et traditionnels dans une atmosphère chaleureuse. Savourez la beauté simple de la cuisine espagnole en contemplant la mer scintillante.</span>
+        </p>
+        <div class="menu-items">
+          <div class="menu-item">
+            <span class="menu-icon">🥘</span>
+            <div>
+              <h4><span data-lang="nl">Verse Paella</span><span data-lang="es">Paella Fresca</span><span data-lang="de">Frische Paella</span><span data-lang="fr">Paella Fraîche</span></h4>
+              <p><span data-lang="nl">Authentieke paella op reservering, bereid met lokale ingrediënten</span><span data-lang="es">Paella auténtica bajo reserva, preparada con ingredientes locales</span><span data-lang="de">Authentische Paella auf Reservierung, mit lokalen Zutaten zubereitet</span><span data-lang="fr">Paella authentique sur réservation, préparée avec des ingrédients locaux</span></p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-icon">🥩</span>
+            <div>
+              <h4><span data-lang="nl">BBQ Vlees</span><span data-lang="es">Carnes a la Brasa</span><span data-lang="de">Gegrilltes Fleisch</span><span data-lang="fr">Viandes Grillées</span></h4>
+              <p><span data-lang="nl">Sappig gegrild vlees bereid op de houtskoolbarbecue met verse kruiden</span><span data-lang="es">Jugosas carnes a la brasa preparadas con carbón y hierbas frescas</span><span data-lang="de">Saftiges Grillgut, auf dem Holzkohlegrill mit frischen Kräutern zubereitet</span><span data-lang="fr">Viandes juteuses grillées au charbon de bois avec des herbes fraîches</span></p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-icon">🫒</span>
+            <div>
+              <h4>Tapas &amp; <span data-lang="nl">Hapjes</span><span data-lang="es">Entrantes</span><span data-lang="de">Snacks</span><span data-lang="fr">Amuse-bouches</span></h4>
+              <p><span data-lang="nl">Een selectie van heerlijke tapas en lokale specialiteiten</span><span data-lang="es">Una selección de deliciosas tapas y especialidades locales</span><span data-lang="de">Eine Auswahl köstlicher Tapas und lokaler Spezialitäten</span><span data-lang="fr">Une sélection de délicieuses tapas et spécialités locales</span></p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-icon">🍷</span>
+            <div>
+              <h4>Sangria &amp; <span data-lang="nl">Dranken</span><span data-lang="es">Bebidas</span><span data-lang="de">Getränke</span><span data-lang="fr">Boissons</span></h4>
+              <p><span data-lang="nl">Huisgemaakte sangria, lokale wijnen en verfrissende cocktails</span><span data-lang="es">Sangría casera, vinos locales y cócteles refrescantes</span><span data-lang="de">Hausgemachte Sangria, lokale Weine und erfrischende Cocktails</span><span data-lang="fr">Sangria maison, vins locaux et cocktails rafraîchissants</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="restaurant-imgs reveal">
+        <div class="img-tall">
+          <img src="great-food-fantastic.jpg" alt="Refugio Vista Bernia restaurant" />
+        </div>
+        <div class="img-sm">
+          <img src="la-paella.jpg" alt="Paella Refugio Vista Bernia" />
+        </div>
+        <div class="img-sm">
+          <img src="carne%20mixta.jpg" alt="Carne mixta Refugio Vista Bernia" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WEDDINGS ════════════════════════════════════════════════════════ -->
+<section class="weddings" id="weddings">
+  <div class="container weddings-inner">
+    <div class="text-center reveal">
+      <span class="section-label">
+        <span data-lang="nl">Bruiloften & Grote Feesten</span>
+        <span data-lang="es">Bodas y Grandes Celebraciones</span>
+        <span data-lang="de">Hochzeiten & Große Feste</span>
+        <span data-lang="fr">Mariages et Grandes Fêtes</span>
+      </span>
+      <h2 class="section-title" style="color:#fff;">
+        <span data-lang="nl">Uw droombruiloft boven <em>de Middellandse Zee</em></span>
+        <span data-lang="es">Su boda de ensueño sobre <em>el Mediterráneo</em></span>
+        <span data-lang="de">Ihre Traumhochzeit über <em>dem Mittelmeer</em></span>
+        <span data-lang="fr">Votre mariage de rêve au-dessus <em>de la Méditerranée</em></span>
+      </h2>
+      <div class="divider" style="margin: 1.5rem auto;"></div>
+      <p class="section-lead" style="color:rgba(255,255,255,0.8); margin: 0 auto; max-width: 700px;">
+        <span data-lang="nl">Stel u voor: uw huwelijksgeloften uitspreken terwijl de zon ondergaat achter de Sierra de Bernia en de zee glinstert aan de horizon. Refugio Vista Bernia biedt een uniek en romantisch kader voor uw speciale dag.</span>
+        <span data-lang="es">Imagínese pronunciando sus votos mientras el sol se pone detrás de la Sierra de Bernia y el mar brilla en el horizonte. Refugio Vista Bernia ofrece un marco único y romántico para su día especial.</span>
+        <span data-lang="de">Stellen Sie sich vor, wie Sie Ihre Ehegelöbnisse sprechen, während die Sonne hinter der Sierra de Bernia untergeht und das Meer am Horizont schimmert. Refugio Vista Bernia bietet einen einzigartigen und romantischen Rahmen für Ihren besonderen Tag.</span>
+        <span data-lang="fr">Imaginez prononcer vos vœux tandis que le soleil se couche derrière la Sierra de Bernia et que la mer brille à l'horizon. Refugio Vista Bernia offre un cadre unique et romantique pour votre journée spéciale.</span>
+      </p>
+    </div>
+
+    <div class="weddings-grid">
+      <div class="reveal">
+        <div class="wedding-features">
+          <div class="w-feature">
+            <div class="w-feature-icon">💒</div>
+            <h4><span data-lang="nl">Ceremonie</span><span data-lang="es">Ceremonia</span><span data-lang="de">Zeremonie</span><span data-lang="fr">Cérémonie</span></h4>
+            <p><span data-lang="nl">Openlucht ceremonies met onvergetelijk panorama</span><span data-lang="es">Ceremonias al aire libre con panorama inolvidable</span><span data-lang="de">Zeremonien im Freien mit unvergesslichem Panorama</span><span data-lang="fr">Cérémonies en plein air avec panorama inoubliable</span></p>
+          </div>
+          <div class="w-feature">
+            <div class="w-feature-icon">🥂</div>
+            <h4><span data-lang="nl">Receptie</span><span data-lang="es">Recepción</span><span data-lang="de">Empfang</span><span data-lang="fr">Réception</span></h4>
+            <p><span data-lang="nl">Elegante recepties tot 200 gasten met culinaire verwennerij</span><span data-lang="es">Elegantes recepciones hasta 200 invitados con delicias culinarias</span><span data-lang="de">Elegante Empfänge bis zu 200 Gästen mit kulinarischen Köstlichkeiten</span><span data-lang="fr">Réceptions élégantes jusqu'à 200 invités avec des délices culinaires</span></p>
+          </div>
+          <div class="w-feature">
+            <div class="w-feature-icon">🍽️</div>
+            <h4><span data-lang="nl">Diner</span><span data-lang="es">Cena</span><span data-lang="de">Dinner</span><span data-lang="fr">Dîner</span></h4>
+            <p><span data-lang="nl">Prachtige dinerconcepten met Mediterrane en internationale smaken</span><span data-lang="es">Hermosos conceptos de cena con sabores mediterráneos e internacionales</span><span data-lang="de">Wunderschöne Dinner-Konzepte mit mediterranen und internationalen Aromen</span><span data-lang="fr">Beaux concepts de dîner avec des saveurs méditerranéennes et internationales</span></p>
+          </div>
+          <div class="w-feature">
+            <div class="w-feature-icon">🎶</div>
+            <h4><span data-lang="nl">Entertainment</span><span data-lang="es">Entretenimiento</span><span data-lang="de">Unterhaltung</span><span data-lang="fr">Animation</span></h4>
+            <p><span data-lang="nl">Live muziek, DJ en dans onder de sterren</span><span data-lang="es">Música en vivo, DJ y baile bajo las estrellas</span><span data-lang="de">Livemusik, DJ und Tanz unter den Sternen</span><span data-lang="fr">Musique live, DJ et danse sous les étoiles</span></p>
+          </div>
+          <div class="w-feature">
+            <div class="w-feature-icon">📸</div>
+            <h4><span data-lang="nl">Fotografie</span><span data-lang="es">Fotografía</span><span data-lang="de">Fotografie</span><span data-lang="fr">Photographie</span></h4>
+            <p><span data-lang="nl">Spectaculaire achtergronden voor onvergetelijke trouwfoto's</span><span data-lang="es">Fondos espectaculares para fotos de boda inolvidables</span><span data-lang="de">Spektakuläre Kulissen für unvergessliche Hochzeitsfotos</span><span data-lang="fr">Décors spectaculaires pour des photos de mariage inoubliables</span></p>
+          </div>
+          <div class="w-feature">
+            <div class="w-feature-icon">🌅</div>
+            <h4><span data-lang="nl">Zonsondergang</span><span data-lang="es">Atardecer</span><span data-lang="de">Sonnenuntergang</span><span data-lang="fr">Coucher de soleil</span></h4>
+            <p><span data-lang="nl">Magische zonsondergangen over de Middellandse Zee vanuit uw diner</span><span data-lang="es">Mágicas puestas de sol sobre el Mediterráneo desde su cena</span><span data-lang="de">Magische Sonnenuntergänge über dem Mittelmeer von Ihrem Dinner aus</span><span data-lang="fr">Couchers de soleil magiques sur la Méditerranée depuis votre dîner</span></p>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-gold mt-3" style="display:inline-block;">
+          <span data-lang="nl">Vrijblijvend informeren</span>
+          <span data-lang="es">Solicitar información</span>
+          <span data-lang="de">Unverbindlich anfragen</span>
+          <span data-lang="fr">Demander des informations</span>
+        </a>
+      </div>
+
+      <div class="weddings-gallery reveal">
+        <div class="w-img">
+          <img src="bar-refugio-vista-bernia%20(1).jpg" alt="Refugio Vista Bernia sfeer" />
+        </div>
+        <div class="w-img">
+          <img src="506399330_9809759912479375_1672513337979972287_n.jpg" alt="Refugio Vista Bernia" />
+        </div>
+        <div class="w-img-wide">
+          <img src="le-panorama.jpg" alt="Panorama Refugio Vista Bernia" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EVENTS / PACKAGES ════════════════════════════════════════════════ -->
+<section class="packages" id="events">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">
+        <span data-lang="nl">Onze Pakketten</span>
+        <span data-lang="es">Nuestros Paquetes</span>
+        <span data-lang="de">Unsere Pakete</span>
+        <span data-lang="fr">Nos Forfaits</span>
+      </span>
+      <h2 class="section-title">
+        <span data-lang="nl">Elke gelegenheid <em>verdient het beste</em></span>
+        <span data-lang="es">Cada ocasión <em>merece lo mejor</em></span>
+        <span data-lang="de">Jeder Anlass <em>verdient das Beste</em></span>
+        <span data-lang="fr">Chaque occasion <em>mérite le meilleur</em></span>
+      </h2>
+    </div>
+
+    <div class="packages-grid mt-3">
+      <!-- Wedding -->
+      <div class="package-card reveal">
+        <div class="package-img">
+          <img src="entradas.jpg" alt="Entradas Refugio Vista Bernia" />
+        </div>
+        <div class="package-body">
+          <span class="package-tag">
+            <span data-lang="nl">Bruiloft</span><span data-lang="es">Boda</span><span data-lang="de">Hochzeit</span><span data-lang="fr">Mariage</span>
+          </span>
+          <h3>
+            <span data-lang="nl">Romantisch Huwelijk</span>
+            <span data-lang="es">Boda Romántica</span>
+            <span data-lang="de">Romantische Hochzeit</span>
+            <span data-lang="fr">Mariage Romantique</span>
+          </h3>
+          <p>
+            <span data-lang="nl">Uw huwelijksdag omgeven door spectaculaire natuur, met de Middellandse Zee als eeuwige getuige.</span>
+            <span data-lang="es">Su día de bodas rodeado de una naturaleza espectacular, con el Mediterráneo como eterno testigo.</span>
+            <span data-lang="de">Ihr Hochzeitstag inmitten spektakulärer Natur, mit dem Mittelmeer als ewigem Zeugen.</span>
+            <span data-lang="fr">Votre jour de mariage entouré d'une nature spectaculaire, avec la Méditerranée comme témoin éternel.</span>
+          </p>
+          <ul>
+            <li><span data-lang="nl">Exclusief gebruik van het terras</span><span data-lang="es">Uso exclusivo de la terraza</span><span data-lang="de">Exklusive Nutzung der Terrasse</span><span data-lang="fr">Usage exclusif de la terrasse</span></li>
+            <li><span data-lang="nl">Diner voor tot 150 gasten</span><span data-lang="es">Cena para hasta 150 invitados</span><span data-lang="de">Dinner für bis zu 150 Gäste</span><span data-lang="fr">Dîner pour jusqu'à 150 invités</span></li>
+            <li><span data-lang="nl">Live muziek of DJ</span><span data-lang="es">Música en vivo o DJ</span><span data-lang="de">Live-Musik oder DJ</span><span data-lang="fr">Musique live ou DJ</span></li>
+            <li><span data-lang="nl">Decoratie & bloemenarrangementen</span><span data-lang="es">Decoración y arreglos florales</span><span data-lang="de">Dekoration & Blumenarrangements</span><span data-lang="fr">Décoration & arrangements floraux</span></li>
+            <li><span data-lang="nl">Persoonlijke weddingcoördinator</span><span data-lang="es">Coordinador de bodas personal</span><span data-lang="de">Persönlicher Hochzeitskoordinator</span><span data-lang="fr">Coordinateur de mariage personnel</span></li>
+          </ul>
+          <a href="#contact" class="package-link">
+            <span data-lang="nl">Meer info</span><span data-lang="es">Más info</span><span data-lang="de">Mehr Info</span><span data-lang="fr">Plus d'info</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Party -->
+      <div class="package-card reveal">
+        <div class="package-img">
+          <img src="singer.jpg" alt="Live muziek Refugio Vista Bernia" />
+        </div>
+        <div class="package-body">
+          <span class="package-tag">
+            <span data-lang="nl">Groot Feest</span><span data-lang="es">Gran Fiesta</span><span data-lang="de">Großes Fest</span><span data-lang="fr">Grande Fête</span>
+          </span>
+          <h3>
+            <span data-lang="nl">Onvergetelijk Feest</span>
+            <span data-lang="es">Fiesta Inolvidable</span>
+            <span data-lang="de">Unvergessliches Fest</span>
+            <span data-lang="fr">Fête Inoubliable</span>
+          </h3>
+          <p>
+            <span data-lang="nl">Verjaardagen, jubilea, bedrijfsfeesten — vier uw bijzondere momenten op de meest spectaculaire locatie van de Costa Blanca.</span>
+            <span data-lang="es">Cumpleaños, aniversarios, fiestas de empresa — celebre sus momentos especiales en el lugar más espectacular de la Costa Blanca.</span>
+            <span data-lang="de">Geburtstage, Jubiläen, Firmenfeiern — feiern Sie Ihre besonderen Momente an der spektakulärsten Location der Costa Blanca.</span>
+            <span data-lang="fr">Anniversaires, jubilés, fêtes d'entreprise — célébrez vos moments spéciaux dans le lieu le plus spectaculaire de la Costa Blanca.</span>
+          </p>
+          <ul>
+            <li><span data-lang="nl">Capaciteit tot 200 gasten</span><span data-lang="es">Capacidad hasta 200 invitados</span><span data-lang="de">Kapazität bis zu 200 Gästen</span><span data-lang="fr">Capacité jusqu'à 200 invités</span></li>
+            <li><span data-lang="nl">BBQ & Mediterraan buffet</span><span data-lang="es">BBQ y buffet mediterráneo</span><span data-lang="de">BBQ & mediterranes Buffet</span><span data-lang="fr">BBQ et buffet méditerranéen</span></li>
+            <li><span data-lang="nl">Open bar optie</span><span data-lang="es">Opción de barra libre</span><span data-lang="de">Open-Bar-Option</span><span data-lang="fr">Option open bar</span></li>
+            <li><span data-lang="nl">Dansen onder de sterrenhemel</span><span data-lang="es">Baile bajo el cielo estrellado</span><span data-lang="de">Tanzen unter dem Sternenhimmel</span><span data-lang="fr">Danser sous le ciel étoilé</span></li>
+            <li><span data-lang="nl">Thema decoratie op aanvraag</span><span data-lang="es">Decoración temática bajo pedido</span><span data-lang="de">Themendekoration auf Anfrage</span><span data-lang="fr">Décoration thématique sur demande</span></li>
+          </ul>
+          <a href="#contact" class="package-link">
+            <span data-lang="nl">Meer info</span><span data-lang="es">Más info</span><span data-lang="de">Mehr Info</span><span data-lang="fr">Plus d'info</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Corporate -->
+      <div class="package-card reveal">
+        <div class="package-img">
+          <img src="bbq-in-the-chimney.jpg" alt="BBQ Refugio Vista Bernia" />
+        </div>
+        <div class="package-body">
+          <span class="package-tag">
+            <span data-lang="nl">Zakelijk</span><span data-lang="es">Corporativo</span><span data-lang="de">Corporate</span><span data-lang="fr">Entreprise</span>
+          </span>
+          <h3>
+            <span data-lang="nl">Zakelijk Evenement</span>
+            <span data-lang="es">Evento Corporativo</span>
+            <span data-lang="de">Business Event</span>
+            <span data-lang="fr">Événement Corporate</span>
+          </h3>
+          <p>
+            <span data-lang="nl">Teambuilding, jaarlijkse dinners en zakelijke evenementen op een inspirerende en unieke locatie hoog in de bergen van Alicante.</span>
+            <span data-lang="es">Team building, cenas anuales y eventos corporativos en una ubicación inspiradora y única en lo alto de las montañas de Alicante.</span>
+            <span data-lang="de">Teambuilding, Jahresdinners und Firmenevents an einem inspirierenden und einzigartigen Ort hoch in den Bergen von Alicante.</span>
+            <span data-lang="fr">Team building, dîners annuels et événements d'entreprise dans un lieu inspirant et unique au sommet des montagnes d'Alicante.</span>
+          </p>
+          <ul>
+            <li><span data-lang="nl">Vergader- & presentatiefaciliteiten</span><span data-lang="es">Instalaciones para reuniones y presentaciones</span><span data-lang="de">Tagungs- & Präsentationseinrichtungen</span><span data-lang="fr">Installations de réunion et présentation</span></li>
+            <li><span data-lang="nl">Culinaire teambuilding activiteiten</span><span data-lang="es">Actividades de team building culinario</span><span data-lang="de">Kulinarische Teambuilding-Aktivitäten</span><span data-lang="fr">Activités de team building culinaire</span></li>
+            <li><span data-lang="nl">Wandeltochten in de Sierra Bernia</span><span data-lang="es">Rutas de senderismo en la Sierra Bernia</span><span data-lang="de">Wanderungen in der Sierra Bernia</span><span data-lang="fr">Randonnées dans la Sierra Bernia</span></li>
+            <li><span data-lang="nl">Op maat gemaakte menu's</span><span data-lang="es">Menús personalizados</span><span data-lang="de">Maßgeschneiderte Menüs</span><span data-lang="fr">Menus sur mesure</span></li>
+          </ul>
+          <a href="#contact" class="package-link">
+            <span data-lang="nl">Meer info</span><span data-lang="es">Más info</span><span data-lang="de">Mehr Info</span><span data-lang="fr">Plus d'info</span> →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ══════════════════════════════════════════════════════════ -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">
+        <span data-lang="nl">Sfeerbeelden</span>
+        <span data-lang="es">Galería de Imágenes</span>
+        <span data-lang="de">Impressionen</span>
+        <span data-lang="fr">Galerie</span>
+      </span>
+      <h2 class="section-title">
+        <span data-lang="nl">Laat u <em>inspireren</em></span>
+        <span data-lang="es">Déjese <em>inspirar</em></span>
+        <span data-lang="de">Lassen Sie sich <em>inspirieren</em></span>
+        <span data-lang="fr">Laissez-vous <em>inspirer</em></span>
+      </h2>
+    </div>
+    <div class="gallery-grid mt-3">
+      <div class="g-item g-item-tall reveal">
+        <img src="le-panorama.jpg" alt="Panorama Refugio Vista Bernia" />
+      </div>
+      <div class="g-item g-item-wide reveal">
+        <img src="bar-refugio-vista-bernia.jpg" alt="Refugio Vista Bernia terras" />
+      </div>
+      <div class="g-item reveal">
+        <img src="paella%20de%20marisco.jpg" alt="Paella de marisco" />
+      </div>
+      <div class="g-item reveal">
+        <img src="grilled-potatoes-onions.jpg" alt="Gegrilde aardappelen" />
+      </div>
+      <div class="g-item reveal">
+        <img src="top-steak.jpg" alt="Top steak Refugio Vista Bernia" />
+      </div>
+      <div class="g-item g-item-wide reveal">
+        <img src="ensalada.jpg" alt="Ensalada Refugio Vista Bernia" />
+      </div>
+      <div class="g-item reveal">
+        <img src="paella%20mixto.jpg" alt="Paella mixto" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LOCATION ═════════════════════════════════════════════════════════ -->
+<section class="location" id="location">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label" style="color:var(--gold-lt);">
+        <span data-lang="nl">De Locatie</span>
+        <span data-lang="es">La Ubicación</span>
+        <span data-lang="de">Die Lage</span>
+        <span data-lang="fr">Le Lieu</span>
+      </span>
+      <h2 class="section-title">
+        <span data-lang="nl">Het hart van de <em>Sierra de Bernia</em></span>
+        <span data-lang="es">El corazón de la <em>Sierra de Bernia</em></span>
+        <span data-lang="de">Das Herz der <em>Sierra de Bernia</em></span>
+        <span data-lang="fr">Le cœur de la <em>Sierra de Bernia</em></span>
+      </h2>
+      <div class="divider"></div>
+      <p class="section-lead">
+        <span data-lang="nl">Gelegen aan de Sierra de Bernia 13, Jalón (Xaló), Alicante. Bereikbaar via een schilderachtige bergweg vanuit Calpe of Jalón. De reis is al een belevenis op zich.</span>
+        <span data-lang="es">Situado en la Sierra de Bernia 13, Jalón (Xaló), Alicante. Accesible por una pintoresca carretera de montaña desde Calpe o Jalón. El viaje ya es una experiencia en sí mismo.</span>
+        <span data-lang="de">Gelegen an der Sierra de Bernia 13, Jalón (Xaló), Alicante. Erreichbar über eine malerische Bergstraße von Calpe oder Jalón aus. Die Fahrt ist bereits ein Erlebnis für sich.</span>
+        <span data-lang="fr">Situé au Sierra de Bernia 13, Jalón (Xaló), Alicante. Accessible par une route de montagne pittoresque depuis Calpe ou Jalón. Le trajet est déjà une expérience en soi.</span>
+      </p>
+    </div>
+    <div class="location-grid">
+      <div class="location-map reveal">
+        <iframe
+          src="https://maps.google.com/maps?q=Sierra+de+Bernia+13+Jalon+Alicante+Spain&t=k&z=13&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="location-facts reveal">
+        <div class="loc-fact">
+          <span class="loc-fact-icon">📍</span>
+          <div>
+            <h4><span data-lang="nl">Adres</span><span data-lang="es">Dirección</span><span data-lang="de">Adresse</span><span data-lang="fr">Adresse</span></h4>
+            <p>Sierra de Bernia 13, Jalón (Xaló), 03727 Alicante, España</p>
+          </div>
+        </div>
+        <div class="loc-fact">
+          <span class="loc-fact-icon">🚗</span>
+          <div>
+            <h4><span data-lang="nl">Bereikbaarheid</span><span data-lang="es">Accesibilidad</span><span data-lang="de">Erreichbarkeit</span><span data-lang="fr">Accessibilité</span></h4>
+            <p>
+              <span data-lang="nl">30 min van Alicante Airport · 15 min van Calpe · 10 min van Jalón</span>
+              <span data-lang="es">30 min del aeropuerto de Alicante · 15 min de Calpe · 10 min de Jalón</span>
+              <span data-lang="de">30 Min. vom Flughafen Alicante · 15 Min. von Calpe · 10 Min. von Jalón</span>
+              <span data-lang="fr">30 min de l'aéroport d'Alicante · 15 min de Calpe · 10 min de Jalón</span>
+            </p>
+          </div>
+        </div>
+        <div class="loc-fact">
+          <span class="loc-fact-icon">🌅</span>
+          <div>
+            <h4><span data-lang="nl">Uitzicht</span><span data-lang="es">Vistas</span><span data-lang="de">Aussicht</span><span data-lang="fr">Vues</span></h4>
+            <p>
+              <span data-lang="nl">Panorama van de haven van Alicante tot Cabo de la Nao · Op heldere dagen zelfs Ibiza zichtbaar</span>
+              <span data-lang="es">Panorama desde el puerto de Alicante hasta el Cabo de la Nao · En días claros incluso Ibiza visible</span>
+              <span data-lang="de">Panorama vom Hafen Alicante bis zum Cabo de la Nao · An klaren Tagen sogar Ibiza sichtbar</span>
+              <span data-lang="fr">Panorama du port d'Alicante jusqu'au Cabo de la Nao · Par temps clair, Ibiza même visible</span>
+            </p>
+          </div>
+        </div>
+        <div class="loc-fact">
+          <span class="loc-fact-icon">📞</span>
+          <div>
+            <h4><span data-lang="nl">Telefoon</span><span data-lang="es">Teléfono</span><span data-lang="de">Telefon</span><span data-lang="fr">Téléphone</span></h4>
+            <p><a href="tel:+34965838320" style="color:rgba(255,255,255,0.8)">+34 965 83 83 20</a></p>
+          </div>
+        </div>
+        <div class="loc-fact">
+          <span class="loc-fact-icon">✉️</span>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:administratie@kofferstunter.nl" style="color:rgba(255,255,255,0.8)">administratie@kofferstunter.nl</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ════════════════════════════════════════════════════ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">
+        <span data-lang="nl">Ervaringen</span>
+        <span data-lang="es">Experiencias</span>
+        <span data-lang="de">Erfahrungen</span>
+        <span data-lang="fr">Expériences</span>
+      </span>
+      <h2 class="section-title">
+        <span data-lang="nl">Wat onze gasten <em>zeggen</em></span>
+        <span data-lang="es">Lo que dicen <em>nuestros huéspedes</em></span>
+        <span data-lang="de">Was unsere Gäste <em>sagen</em></span>
+        <span data-lang="fr">Ce que disent <em>nos invités</em></span>
+      </h2>
+    </div>
+    <div class="testimonials-grid mt-3">
+      <div class="testimonial reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p data-lang="nl">"Het uitzicht is onbeschrijfelijk mooi. We hebben hier ons huwelijksdiner gehouden en het was magisch. De paella was verrukkelijk en het personeel uiterst vriendelijk."</p>
+        <p data-lang="es">"Las vistas son de una belleza indescriptible. Celebramos aquí nuestra cena de bodas y fue mágico. La paella estaba deliciosa y el personal fue extremadamente amable."</p>
+        <p data-lang="de">"Die Aussicht ist unbeschreiblich schön. Wir haben hier unser Hochzeitsessen gefeiert und es war magisch. Die Paella war köstlich und das Personal äußerst freundlich."</p>
+        <p data-lang="fr">"La vue est d'une beauté indescriptible. Nous avons célébré notre dîner de mariage ici et c'était magique. La paella était délicieuse et le personnel extrêmement aimable."</p>
+        <div class="testimonial-author">— Maria & Carlos</div>
+        <div class="testimonial-place">Valencia, España</div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p data-lang="nl">"Een absolute aanrader voor wie een bijzondere locatie zoekt. We hebben hier onze 25-jarige verjaardag gevierd met 80 gasten. Iedereen was onder de indruk van het panorama."</p>
+        <p data-lang="es">"Muy recomendable para quienes buscan una ubicación especial. Celebramos aquí nuestro 25 aniversario con 80 invitados. Todos quedaron impresionados con el panorama."</p>
+        <p data-lang="de">"Absolut empfehlenswert für alle, die einen besonderen Ort suchen. Wir haben hier unseren 25. Jahrestag mit 80 Gästen gefeiert. Alle waren vom Panorama begeistert."</p>
+        <p data-lang="fr">"Absolument recommandé pour ceux qui cherchent un lieu particulier. Nous avons célébré notre 25e anniversaire ici avec 80 invités. Tout le monde a été impressionné par le panorama."</p>
+        <div class="testimonial-author">— Hans &amp; Ingrid</div>
+        <div class="testimonial-place">München, Deutschland</div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p data-lang="nl">"De perfecte combinatie van natuur, lekker eten en een warme sfeer. Het uitzicht over de zee tijdens onze receptie was iets wat we nooit zullen vergeten."</p>
+        <p data-lang="es">"La combinación perfecta de naturaleza, buena comida y ambiente cálido. Las vistas al mar durante nuestra recepción son algo que nunca olvidaremos."</p>
+        <p data-lang="de">"Die perfekte Kombination aus Natur, gutem Essen und warmem Ambiente. Der Meerblick während unseres Empfangs ist etwas, das wir nie vergessen werden."</p>
+        <p data-lang="fr">"La combinaison parfaite de nature, bonne cuisine et atmosphère chaleureuse. La vue sur la mer pendant notre réception est quelque chose que nous n'oublierons jamais."</p>
+        <div class="testimonial-author">— Sophie &amp; Pierre</div>
+        <div class="testimonial-place">Lyon, France</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ══════════════════════════════════════════════════════════ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">Contact</span>
+      <h2 class="section-title">
+        <span data-lang="nl">Neem contact <em>met ons op</em></span>
+        <span data-lang="es">Póngase <em>en contacto</em></span>
+        <span data-lang="de">Nehmen Sie <em>Kontakt auf</em></span>
+        <span data-lang="fr">Contactez- <em>nous</em></span>
+      </h2>
+      <p class="section-lead">
+        <span data-lang="nl">Geïnteresseerd in een bruiloft, feest of gewoon een etentje? Wij horen graag van u!</span>
+        <span data-lang="es">¿Interesado en una boda, fiesta o simplemente una cena? ¡Nos encantaría saber de usted!</span>
+        <span data-lang="de">Interesse an einer Hochzeit, einem Fest oder einfach einem Abendessen? Wir freuen uns von Ihnen zu hören!</span>
+        <span data-lang="fr">Intéressé par un mariage, une fête ou simplement un dîner ? Nous serions ravis d'avoir de vos nouvelles !</span>
+      </p>
+    </div>
+
+    <div class="contact-grid mt-3">
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <h4><span data-lang="nl">Adres</span><span data-lang="es">Dirección</span><span data-lang="de">Adresse</span><span data-lang="fr">Adresse</span></h4>
+            <p>Sierra de Bernia 13, Jalón (Xaló)<br/>03727 Alicante, España</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <h4><span data-lang="nl">Telefoon</span><span data-lang="es">Teléfono</span><span data-lang="de">Telefon</span><span data-lang="fr">Téléphone</span></h4>
+            <a href="tel:+34965838320">+34 965 83 83 20</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:administratie@kofferstunter.nl">administratie@kofferstunter.nl</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div>
+            <h4><span data-lang="nl">Openingstijden</span><span data-lang="es">Horario</span><span data-lang="de">Öffnungszeiten</span><span data-lang="fr">Horaires</span></h4>
+            <p>
+              <span data-lang="nl">Ma–Vr: 10:00–22:00<br/>Za–Zo: 09:00–23:00</span>
+              <span data-lang="es">Lun–Vie: 10:00–22:00<br/>Sáb–Dom: 09:00–23:00</span>
+              <span data-lang="de">Mo–Fr: 10:00–22:00<br/>Sa–So: 09:00–23:00</span>
+              <span data-lang="fr">Lun–Ven: 10h00–22h00<br/>Sam–Dim: 09h00–23h00</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>
+                <span data-lang="nl">Voornaam</span><span data-lang="es">Nombre</span><span data-lang="de">Vorname</span><span data-lang="fr">Prénom</span>
+              </label>
+              <input type="text" name="first_name" required />
+            </div>
+            <div class="form-group">
+              <label>
+                <span data-lang="nl">Achternaam</span><span data-lang="es">Apellido</span><span data-lang="de">Nachname</span><span data-lang="fr">Nom</span>
+              </label>
+              <input type="text" name="last_name" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label>
+              <span data-lang="nl">Type evenement</span><span data-lang="es">Tipo de evento</span><span data-lang="de">Art der Veranstaltung</span><span data-lang="fr">Type d'événement</span>
+            </label>
+            <select name="event_type">
+              <option value="">—</option>
+              <option value="wedding"><span data-lang="nl">Bruiloft</span><span data-lang="es">Boda</span><span data-lang="de">Hochzeit</span><span data-lang="fr">Mariage</span></option>
+              <option value="birthday"><span data-lang="nl">Verjaardag / Jubileum</span><span data-lang="es">Cumpleaños / Aniversario</span><span data-lang="de">Geburtstag / Jubiläum</span><span data-lang="fr">Anniversaire / Jubilé</span></option>
+              <option value="corporate"><span data-lang="nl">Zakelijk evenement</span><span data-lang="es">Evento corporativo</span><span data-lang="de">Business Event</span><span data-lang="fr">Événement d'entreprise</span></option>
+              <option value="restaurant"><span data-lang="nl">Restaurant reservering</span><span data-lang="es">Reserva de restaurante</span><span data-lang="de">Restaurantreservierung</span><span data-lang="fr">Réservation de restaurant</span></option>
+              <option value="other"><span data-lang="nl">Anders</span><span data-lang="es">Otro</span><span data-lang="de">Sonstiges</span><span data-lang="fr">Autre</span></option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>
+              <span data-lang="nl">Bericht</span><span data-lang="es">Mensaje</span><span data-lang="de">Nachricht</span><span data-lang="fr">Message</span>
+            </label>
+            <textarea name="message" placeholder="..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold">
+            <span data-lang="nl">Verstuur bericht</span>
+            <span data-lang="es">Enviar mensaje</span>
+            <span data-lang="de">Nachricht senden</span>
+            <span data-lang="fr">Envoyer le message</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="nav-logo">Refugio Vista Bernia<span>Sierra de Bernia · Costa Blanca</span></span>
+      <p>
+        <span data-lang="nl">Een unieke locatie hoog in de Sierra de Bernia met adembenemend uitzicht over de Middellandse Zee. Restaurant, bruiloften en onvergetelijke feesten.</span>
+        <span data-lang="es">Un lugar único en lo alto de la Sierra de Bernia con impresionantes vistas al Mediterráneo. Restaurante, bodas y fiestas inolvidables.</span>
+        <span data-lang="de">Ein einzigartiger Ort hoch in der Sierra de Bernia mit atemberaubendem Blick auf das Mittelmeer. Restaurant, Hochzeiten und unvergessliche Feste.</span>
+        <span data-lang="fr">Un lieu unique au sommet de la Sierra de Bernia avec une vue imprenable sur la Méditerranée. Restaurant, mariages et fêtes inoubliables.</span>
+      </p>
+    </div>
+    <div class="footer-col">
+      <h5><span data-lang="nl">Navigatie</span><span data-lang="es">Navegación</span><span data-lang="de">Navigation</span><span data-lang="fr">Navigation</span></h5>
+      <ul>
+        <li><a href="#about"><span data-lang="nl">Over ons</span><span data-lang="es">Nosotros</span><span data-lang="de">Über uns</span><span data-lang="fr">À propos</span></a></li>
+        <li><a href="#restaurant">Restaurant</a></li>
+        <li><a href="#weddings"><span data-lang="nl">Bruiloften</span><span data-lang="es">Bodas</span><span data-lang="de">Hochzeiten</span><span data-lang="fr">Mariages</span></a></li>
+        <li><a href="#events"><span data-lang="nl">Feesten</span><span data-lang="es">Eventos</span><span data-lang="de">Events</span><span data-lang="fr">Événements</span></a></li>
+        <li><a href="#gallery"><span data-lang="nl">Galerij</span><span data-lang="es">Galería</span><span data-lang="de">Galerie</span><span data-lang="fr">Galerie</span></a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+34965838320">+34 965 83 83 20</a></li>
+        <li><a href="mailto:administratie@kofferstunter.nl">administratie@kofferstunter.nl</a></li>
+        <li>Sierra de Bernia 13</li>
+        <li>Jalón (Xaló), Alicante</li>
+        <li>España</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>
+        <span data-lang="nl">Taal</span>
+        <span data-lang="es">Idioma</span>
+        <span data-lang="de">Sprache</span>
+        <span data-lang="fr">Langue</span>
+      </h5>
+      <ul>
+        <li><a href="#" onclick="setLang('nl');return false;">🇳🇱 Nederlands</a></li>
+        <li><a href="#" onclick="setLang('es');return false;">🇪🇸 Español</a></li>
+        <li><a href="#" onclick="setLang('de');return false;">🇩🇪 Deutsch</a></li>
+        <li><a href="#" onclick="setLang('fr');return false;">🇫🇷 Français</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Refugio Vista Bernia. <span data-lang="nl">Alle rechten voorbehouden.</span><span data-lang="es">Todos los derechos reservados.</span><span data-lang="de">Alle Rechte vorbehalten.</span><span data-lang="fr">Tous droits réservés.</span></span>
+    <span>Sierra de Bernia · Jalón · Alicante · España</span>
+  </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ════════════════════════════════════════════════════════ -->
+<script>
+  // Language switching
+  function setLang(lang) {
+    document.body.className = lang;
+    document.documentElement.lang = lang;
+    ['nl','es','de','fr'].forEach(l => {
+      const btn = document.getElementById('btn-' + l);
+      if (btn) btn.classList.toggle('active', l === lang);
+    });
+    localStorage.setItem('rvb-lang', lang);
+  }
+
+  // Restore language
+  const saved = localStorage.getItem('rvb-lang');
+  if (saved) setLang(saved);
+
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    if (!links) return;
+    const isOpen = links.style.display === 'flex';
+    links.style.display = isOpen ? 'none' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '72px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'rgba(26,26,26,0.97)';
+    links.style.padding = '1rem 2rem';
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    const langs = {
+      nl: '✓ Bericht verzonden! Wij nemen zo snel mogelijk contact met u op.',
+      es: '✓ ¡Mensaje enviado! Nos pondremos en contacto lo antes posible.',
+      de: '✓ Nachricht gesendet! Wir melden uns so schnell wie möglich.',
+      fr: '✓ Message envoyé ! Nous vous contacterons dès que possible.'
+    };
+    const lang = document.body.className || 'nl';
+    btn.textContent = langs[lang];
+    btn.style.background = '#4a5e3a';
+    btn.style.borderColor = '#4a5e3a';
+    e.target.reset();
+    setTimeout(() => {
+      btn.innerHTML = `<span data-lang="nl">Verstuur bericht</span><span data-lang="es">Enviar mensaje</span><span data-lang="de">Nachricht senden</span><span data-lang="fr">Envoyer le message</span>`;
+      btn.style.background = '';
+      btn.style.borderColor = '';
+    }, 4000);
+  }
+</script>
+</body>
+</html>
